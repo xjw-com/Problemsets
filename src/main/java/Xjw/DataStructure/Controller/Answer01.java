@@ -8,7 +8,7 @@ import java.util.List;
  * @Date 2022/7/3 15:16
  * @Version 1.0
  */
-public class TableStackQueueAnswer {
+public class Answer01 {
     public void printLots(List<Integer> L,List<Integer> P){
         Iterator<Integer> iteratorL=L.iterator();
         Iterator<Integer> iteratorP=P.iterator();
@@ -23,7 +23,7 @@ public class TableStackQueueAnswer {
             }
         }
         System.out.print(itemL+"");
+        // 时间复杂度为O(N^2)|O(n*m) n,m 为L,P的长度。
     }
-// 时间复杂度为O(N^2)|O(n*m) n,m 为L,P的长度。
 
 }
