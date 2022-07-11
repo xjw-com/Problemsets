@@ -6,8 +6,10 @@ package Xjw.DataStructure.Controller;
         public singleLinkNode next;
 
         public singleLinkNode(Integer V) {
-            value = V;
-            next = null;
+            this.value = V;
+        }
+        public Integer getValue() {
+            return this.value;
         }
     }
 
@@ -17,8 +19,6 @@ package Xjw.DataStructure.Controller;
  */
 public  class SingleList {
         public singleLinkNode singleLinkNodeHead;
-
-
 
     /**
      * 得到单链表的长度
@@ -36,11 +36,14 @@ public  class SingleList {
 
         // 根据索引找到节点的位置
         public singleLinkNode getNodeIndex(int index) {
-            if (index < 0 || index > size()) {
-                System.out.println("索引index的位置不合法");
+            if (index <= 0) {
+                index=1;
+            }
+            if(index>=size()){
+                index=size();
             }
             singleLinkNode node = singleLinkNodeHead;
-            while (index - 1 != 0) {
+            while (index-1!= 0) {
                 //节点向后遍历一位，索引减一。当索引等于一时找到节点
                 node = node.next;
                 index--;
@@ -76,16 +79,33 @@ public  class SingleList {
         //按索引进行插入
         public void addIndex(int index, int data) {
             singleLinkNode singleLikNodeAdd = new singleLinkNode(data);
-            if (index == 0) {
+            if (index <= 0) {
                 addHeadData(data);
             }
-            if (index == size()) {
+            if (index >= size()) {
                 addTailData(data);
             }
             singleLinkNode addNode = getNodeIndex(index);
             //顺序不能反。
             singleLikNodeAdd.next = addNode.next;
             addNode.next = singleLikNodeAdd;
+        }
+
+        // 遍历链表
+        //遍历节点
+        public void list(){
+            if (singleLinkNodeHead.next == null){
+                System.out.println("空链表");
+                return;
+            }
+            singleLinkNode temp = singleLinkNodeHead;
+            while (true){
+                if (temp == null){
+                    break;
+                }
+                System.out.println(temp.getValue());
+                temp = temp.next;
+            }
         }
 
         //交换两相邻的元素--指定元素和它后一个节点交换。如果为最后一个节点则和它前一个节点交换(通过调整链而不是调整数据)
@@ -100,6 +120,14 @@ public  class SingleList {
                 preNode.next = Node.next;
                 Node.next = preNode;
                 prepreNode.next = Node;
+            }else if(index==0){
+                singleLinkNode Node = getNodeIndex(index);
+                singleLinkNode NodeNext = getNodeIndex(index + 1);
+                System.out.println(Node.getValue());
+
+                Node.next = NodeNext.next;
+                singleLinkNodeHead.next = NodeNext;
+                NodeNext.next = Node;
             } else {
                 singleLinkNode Node = getNodeIndex(index);
                 singleLinkNode preNode = getNodeIndex(index - 1);
@@ -110,7 +138,18 @@ public  class SingleList {
             }
         }
         public static void main(String[] args) {
-           
+           SingleList singleList=new SingleList();
+           singleList.addTailData(1);
+           singleList.addTailData(2);
+           singleList.addTailData(3);
+           singleList.addTailData(4);
+//           singleList.addIndex(1,5);
+//           singleList.addIndex(7,5);
+            System.out.println( singleList.getNodeIndex(5).getValue());
+       //     System.out.println( singleList.size());
+
+//           singleList.changeNode(1);
+ //          singleList.list();
         }
     }
 
