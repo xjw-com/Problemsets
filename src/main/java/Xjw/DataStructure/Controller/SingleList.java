@@ -1,13 +1,12 @@
 package Xjw.DataStructure.Controller;
 
 
-import org.w3c.dom.Node;
 
-class singleLinkNode {
+class SingleLinkNode {
     public Integer value;
-    public singleLinkNode next;
+    public SingleLinkNode next;
 
-    public singleLinkNode(Integer V) {
+    public SingleLinkNode(Integer V) {
         this.value = V;
     }
 
@@ -21,7 +20,7 @@ class singleLinkNode {
  * @author xjw
  */
 public class SingleList {
-    public singleLinkNode singleLinkNodeHead;
+    public SingleLinkNode singleLinkNodeHead;
 
     /**
      * 得到单链表的长度
@@ -29,7 +28,7 @@ public class SingleList {
      * @return
      */
     public int size() {
-        singleLinkNode singleLinkNodeLen = singleLinkNodeHead;
+        SingleLinkNode singleLinkNodeLen = singleLinkNodeHead;
         int size = 0;
         while (singleLinkNodeLen != null) {
             size++;
@@ -44,14 +43,14 @@ public class SingleList {
      * @param index
      * @return
      */
-    public singleLinkNode getNodeIndex(int index) {
+    public SingleLinkNode getNodeIndex(int index) {
         if (index <= 0) {
             index = 1;
         }
         if (index >= size()) {
             index = size();
         }
-        singleLinkNode node = singleLinkNodeHead;
+        SingleLinkNode node = singleLinkNodeHead;
         while (index - 1 != 0) {
             //节点向后遍历一位，索引减一。当索引等于一时找到节点
             node = node.next;
@@ -66,7 +65,7 @@ public class SingleList {
      * @param data
      */
     public void addHeadData(int data) {
-        singleLinkNode singleLinkNodeAddHead = new singleLinkNode(data);
+        SingleLinkNode singleLinkNodeAddHead = new SingleLinkNode(data);
         if (singleLinkNodeHead == null) {
             singleLinkNodeHead = singleLinkNodeAddHead;
             return;
@@ -82,12 +81,12 @@ public class SingleList {
      * @param data
      */
     public void addTailData(int data) {
-        singleLinkNode singleLinkNodeAddTail = new singleLinkNode(data);
+        SingleLinkNode singleLinkNodeAddTail = new SingleLinkNode(data);
         if (singleLinkNodeHead == null) {
             singleLinkNodeHead = singleLinkNodeAddTail;
             return;
         }
-        singleLinkNode curNode = singleLinkNodeHead;
+        SingleLinkNode curNode = singleLinkNodeHead;
         while (curNode.next != null) {
             curNode = curNode.next;
         }
@@ -102,7 +101,7 @@ public class SingleList {
      * @param data
      */
     public void addIndex(int index, int data) {
-        singleLinkNode singleLikNodeAdd = new singleLinkNode(data);
+        SingleLinkNode singleLikNodeAdd = new SingleLinkNode(data);
         if (index <= 0) {
             addHeadData(data);
             return;
@@ -111,7 +110,7 @@ public class SingleList {
             addTailData(data);
             return;
         }
-        singleLinkNode addNode = getNodeIndex(index);
+        SingleLinkNode addNode = getNodeIndex(index);
         //顺序不能反。
         singleLikNodeAdd.next = addNode.next;
         addNode.next = singleLikNodeAdd;
@@ -126,7 +125,7 @@ public class SingleList {
             System.out.println("空链表");
             return;
         }
-        singleLinkNode temp = singleLinkNodeHead;
+        SingleLinkNode temp = singleLinkNodeHead;
         while (true) {
             if (temp == null) {
                 break;
@@ -142,9 +141,9 @@ public class SingleList {
      * @param index
      */
     public void changeNode(int index) {
-        singleLinkNode preNode=null,Node=null,nextNode=null;
-        singleLinkNode temp= singleLinkNodeHead;
-        int nowIndex=0;
+        SingleLinkNode preNode=null,Node=null,nextNode=null;
+        SingleLinkNode temp= singleLinkNodeHead;
+        int nowIndex=1;
         while (temp.next!=null){
             if(nowIndex==index-1){
                 preNode=temp;
@@ -171,7 +170,7 @@ public class SingleList {
         singleList.addTailData(3);
         singleList.addTailData(4);
         singleList.addTailData(5);
-//        singleList.addIndex(1,5);
+        singleList.addIndex(1,5);
 //        singleList.addIndex(7,6);
 //        System.out.println(singleList.getNodeIndex(3).getValue());
         singleList.list();
