@@ -135,6 +135,24 @@ public class SingleList {
         }
     }
 
+    public  boolean  contains(int data){
+        SingleLinkNode singleLinkNode=singleLinkNodeHead;
+        while (singleLinkNode.next!=null){
+            if(singleLinkNode.next.getValue()==data){
+                return true;
+            }
+            singleLinkNode=singleLinkNode.next;
+        }
+        return false;
+    }
+
+    public  boolean  contains2(int data){
+        SingleLinkNode singleLinkNode=singleLinkNodeHead;
+        while (singleLinkNode.next!=null&&singleLinkNode.next.getValue()!=data){
+            singleLinkNode=singleLinkNode.next;
+        }
+        return singleLinkNode.next!=null;
+    }
     /**
      * 交换两相邻的元素--指定元素和它后一个节点交换。如果为最后一个节点则和它前一个节点交换(通过调整链而不是调整数据)
      *
@@ -173,6 +191,7 @@ public class SingleList {
         singleList.addIndex(1,5);
 //        singleList.addIndex(7,6);
 //        System.out.println(singleList.getNodeIndex(3).getValue());
+        System.out.println(singleList.contains2(8));
         singleList.list();
         System.out.println("--------------------");
         singleList.changeNode(3);

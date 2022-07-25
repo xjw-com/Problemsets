@@ -154,9 +154,21 @@ public class DoubleList {
         }
         int nowIndex=1;
         DoubleLinkList tempList=NodeHead;
+        DoubleLinkList linkList1=null;
+        DoubleLinkList linkList2=null;
         while (NodeHead.NodeNext!=NodeTail){
             if(nowIndex==index){
-
+                linkList1=tempList;
+            }
+            if(nowIndex==index+1){
+                linkList2=tempList;
+                linkList1.NodePre.NodeNext=linkList2;
+                linkList1.NodeNext=linkList2.NodeNext;
+                linkList2.NodeNext=linkList1;
+                linkList2.NodeNext.NodePre=linkList1;
+                linkList2.NodePre=linkList1.NodePre;
+                linkList1.NodePre=linkList2;
+                break;
             }
             tempList=tempList.NodeNext;
             nowIndex++;
@@ -170,9 +182,9 @@ public class DoubleList {
       doubleList.addTail(3);
       doubleList.addTail(4);
       doubleList.addHead(5);
-      doubleList.addIndex(1,6);
+      doubleList.addIndex(5,6);
       doubleList.list();
-      doubleList.changeNode(1);
+      doubleList.changeNode(2);
       System.out.println("--------------");
       doubleList.list();
     }
