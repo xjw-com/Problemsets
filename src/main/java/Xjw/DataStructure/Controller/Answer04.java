@@ -72,7 +72,11 @@ public class Answer04 {
             integer2=listIterator2.next();
         }
         while (integer1!=null&&integer2!=null){
+          //两表都为升序
             int compareResult=integer1.compareTo(integer2);
+            //两表都为降序
+            //int compareResult=integer1.compareTo(integer2);
+            //TODO 一升一降 待完善
             if(compareResult==0){
                 Intersect.add(integer1);
                 integer1=listIterator1.hasNext()?listIterator1.next():null;
@@ -80,9 +84,22 @@ public class Answer04 {
             }else if(compareResult<0){
                 Intersect.add(integer1);
                 integer1=listIterator1.hasNext()?listIterator1.next():null;
+
             }else{
                 Intersect.add(integer2);
                 integer2=listIterator2.hasNext()?listIterator2.next():null;
+            }
+        }
+       if(integer1==null){
+           while (integer2!=null){
+               Intersect.add(integer2);
+               integer2=listIterator2.hasNext()?listIterator2.next():null;
+           }
+       }
+        if(integer2==null){
+            while (integer1!=null){
+                Intersect.add(integer1);
+                integer1=listIterator1.hasNext()?listIterator1.next():null;
             }
         }
         return Intersect;
@@ -91,16 +108,23 @@ public class Answer04 {
     public static void main(String[] args) {
         List<Integer> list1 = new ArrayList<Integer>();
         List<Integer> list2 = new ArrayList<Integer>();
-        list1.add(1);
-        list1.add(2);
-        list1.add(3);
-        list1.add(4);
-        list1.add(5);
+//        list1.add(1);
+//        list1.add(2);
+//        list1.add(3);
+//        list1.add(4);
+//        list1.add(5);
+//        list2.add(4);
+//        list2.add(5);
+//        list2.add(6);
+//        list2.add(7);
+//        list2.add(8);
+        list1.add(9);
+        list1.add(8);
+        list1.add(7);
+        list1.add(6);
         list2.add(4);
-        list2.add(5);
-        list2.add(6);
-        list2.add(7);
-        list2.add(8);
+        list2.add(3);
+        list2.add(2);
         List<Integer> listResult=new ArrayList<Integer>();
         //intersection(list1,list2,listResult);
         intersection2(list1,list2,listResult);
