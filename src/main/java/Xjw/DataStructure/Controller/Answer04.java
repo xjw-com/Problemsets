@@ -75,7 +75,7 @@ public class Answer04 {
           //两表都为升序
             int compareResult=integer1.compareTo(integer2);
             //两表都为降序
-            //int compareResult=integer1.compareTo(integer2);
+            //int compareResult=integer2.compareTo(integer1);
             //TODO 一升一降 待完善
             if(compareResult==0){
                 Intersect.add(integer1);
